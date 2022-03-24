@@ -2,7 +2,11 @@
 \usepackage{natbib}
 \bibliographystyle{unsrtnat}
 \usepackage{tabularx} 
+\usepackage{multirow}
 \usepackage{amsmath} 
+\usepackage{physics}
+\usepackage{bm}
+\newcommand{\uvec}[1]{\boldsymbol{\hat{\textbf{#1}}}}
 \usepackage{graphicx}
 \usepackage[margin=1in,letterpaper]{geometry} 
 \usepackage[final]{hyperref}
@@ -21,20 +25,36 @@
 \maketitle
 
 \begin{abstract}
-In this experiment we studied something very important and measured the value of another thing. The velocity we determine is $V=45 \pm 3\ \mathrm{km.s}^{-1}$, this is not in agreement with values measured by \cite{Author2010}. This might be due to some problems in our experiments, we could improve this by doing something.
 \end{abstract}
 
+\section{Theory}
+A pure dipole centered at the origin produces a magnetic field given by
+$$\vectorbold{B}(\vectorbold{r}) = \frac{\mu_0}{4\pi} \left(\frac{3\vectorbold{r}(\vectorbold{m} \cdot \vectorbold{r})}{r^5} - \frac{\vectorbold{m}}{r^3}\right)$$
+The equation of motion given by the Lorentz force with $\vectorbold{E} = 0$ is 
+$$\ddot{\vectorbold{r}} = \frac{q}{m} \dot{\vectorbold{r}} \times \vectorbold{B}$$
+Introducing the dimensionless variables $\tilde{\vectorbold{r}}= \frac{\vectorbold{r}}{r_0}$, $\tilde{\vectorbold{m}} = \frac{\vectorbold{m}}{m_0}$, $\tilde{t}= \frac{t}{t_0}$ the equation of motion can be rewritten to
+\begin{equation}
+    \frac{d^2 \tilde{\vectorbold{r}}}{{d\tilde{t}}^2} = \frac{d\tilde{\vectorbold{r}}}{d\tilde{t}} \times \tilde{\vectorbold{B}}
+\end{equation}
+where $$\tilde{\vectorbold{B}} = \frac{3 \hat{\tilde{\vectorbold{r}}} (\tilde{\vectorbold{m}} \cdot \hat{\tilde{\vectorbold{r}}}) - \tilde{\vectorbold{m}}}{{\tilde{r}}^3}$$ 
+The constants $r_0$, $m_0$ and $t_0$ has been chosen to make the velocities in the range 250-750 km/s when r is in the same magnitude as the earths radius. All the constants used in this problem are displayed in the table below.
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|c|c|}
+\hline
+    constant & value & dimension\\
+\hline
+    $q$ & $1.6 \cdot 10^{-19}$ & C\\
+    $m$ & $1.67 \cdot 10^{-27}$ & kg\\
+    $r_0$ & $6371 \cdot 10^3$ & m\\ 
+    $m_0$ & $8.22 \cdot 10^{22}$ & Am$^2$\\ 
+    $t_0$ & $24.67$ & s\\
+\hline
+\end{tabular}
+\label{table:constants}
+\end{center}
 
-\section{Introduction}
-\section{Method}
 
-\section{Results and Analysis}
 
-\section{Discussion and Conclusion}
 \begin{thebibliography}{99}
-
-\bibitem[\protect\citeauthoryear{Author}{2010}]{Author2010}
-Author, A.N and Another, A. N., 2010, MNRAS, 431, 28.
-
 \end{thebibliography}
 \end{document}
