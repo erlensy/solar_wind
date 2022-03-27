@@ -35,6 +35,7 @@ def plotTrajectories(n, XZ = False, XY = False):
         data = np.loadtxt(f"../data/trajectory{i}.txt", skiprows = 1)
         if XZ: yData = data[:, 2]
         if XY: yData = data[:, 1]
+        plt.scatter(data[0, 0], yData[0], color = "orange", s = 20)
         plt.plot(data[:, 0], yData, color = "red", linewidth = 0.6)
 
 def setupFig(XZ = False, XY = False):
@@ -77,8 +78,22 @@ def plot4():
     plt.savefig("../figures/trajectoriesXY.pdf", dpi = 600)
     plt.close()
 
+def plot5():
+    data = np.loadtxt("../data/trajectory0.txt", skiprows = 1)
+    v = data[:, 3:]
+    E = np.zeros(len(v[:, 0]))
+    E0 = v[0, 0]**2 + v[0, 1]**2 + v[0, 2]**2
+    t = np.arange(0, len(v[:, 0])*0.0005, 0.0005)
+    for i in range(len(v[:, 0])):
+        E[i] = np.abs(v[i, 0]**2 + v[i, 1]**2 + v[i, 2]**2 - E0) / E0
+    plt.plot(t, E)
+    plt.xlabel(r"$\tilde{t}$"); plt.ylabel(r"$|E(\tilde{t}) - E_0| / E_0$")
+    plt.savefig("../figures/energyDifference.pdf", dpi = 600)
+    plt.close()
+
 if __name__ == "__main__":
     plot1()
     plot2()
     plot3()
     plot4()
+    plot5()
