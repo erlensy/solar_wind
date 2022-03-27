@@ -1,3 +1,5 @@
 latex/*.aux
 latex/*.log
 latex/*.out
+data/*
+.DS_Store
