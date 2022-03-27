@@ -14,8 +14,8 @@ function toFile(Λ, filename)
     close(io)
 end
 
-steps = 100000
-h = 0.0005
+steps = 500000
+h = 0.00001
 initX = [-10.0 10.0]
 initZ = [-10.0 -5.0 -2.5 0.0 2.5 5.0 10.0]
 initVx = [-1.0 1.0]
