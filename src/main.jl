@@ -14,23 +14,22 @@ function toFile(Λ, filename)
     close(io)
 end
 
-steps = 500000
-hMin = 1e-7
-hMax = 5e-1
-errorMin = 1e-9
-errorMax = 1e-6
-nMax = 500
+const steps = 500000
+const hMin = 1e-7
+const hMax = 5e-1
+const errorMin = 1e-9
+const errorMax = 1e-6
+const nMax = 500
 
-initX = [20.0 -20.0]
-initZ = [10.0 0.0]
-initVx = [-1.0 1.0]
-tot = 0
-for i in 1:length(initX)
-    for z in initZ
-        init = [initX[i] 0.0 z; initVx[i] 0.0 0.0]
-        @time Λ = RK45(steps, hMin, hMax, errorMin, 
-                       errorMax, nMax, init)
-        toFile(Λ, string("../data/trajectory", tot, ".txt"))
-        global tot += 1
-    end
+# init format = [x, y, z; vx, vy, vz]
+# add more rows for more trajectories
+
+init = cat([-20. 0. 10.; -1. 0. 0.], 
+           [-20. 0. 10.; -2. 0. 0.], 
+           dims = 3)
+
+for i in 1:length(init[1, 1, :])
+    @time Λ = RK45(steps, hMin, hMax, errorMin, 
+                   errorMax, nMax, init[:, :, i])
+    toFile(Λ, string("../data/trajectory", i, ".txt"))
 end
