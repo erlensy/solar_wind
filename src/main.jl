@@ -14,7 +14,7 @@ function toFile(Λ, filename)
     close(io)
 end
 
-const steps = 500000
+const steps = 5000000
 const hMin = 1e-7
 const hMax = 5e-1
 const errorMin = 1e-9
@@ -23,9 +23,9 @@ const nMax = 500
 
 # init format = [x, y, z; vx, vy, vz]
 # add more rows for more trajectories
-
-init = cat([-20. 0. 10.; -1. 0. 0.], 
-           [-20. 0. 10.; -2. 0. 0.], 
+init = cat([-15. 0. 11.; 1. 0. 0.], 
+           [15. 0. 10.; -1. 0. 0.], 
+           [10. 0. 4.; -1. 0. 0.], 
            dims = 3)
 
 for i in 1:length(init[1, 1, :])
