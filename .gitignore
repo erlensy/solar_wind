@@ -1,4 +1,3 @@
-latex/*.aux
-latex/*.log
-latex/*.out
+latex/*
+hand_in.zip
 .DS_Store
